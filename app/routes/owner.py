@@ -47,13 +47,13 @@ def modify_owner(owner_id):
 @owner_bp.route("/", methods=["GET"])
 def list_all_owners():
     all_owners = Owner.query.all()
-    response = [{"owner_id": owner.id, "name": owner.name, "is_car_owner": owner.is_car_owner} for owner in all_owners]
+    response = [{"owner_id": owner.id, "name": owner.name, "sale_opportunity": not owner.is_car_owner} for owner in all_owners]
     return jsonify(response), 200
 
 @owner_bp.route("/<int:owner_id>", methods=["GET"])
 def retrieve_owner(owner_id):
     specific_owner = Owner.query.get_or_404(owner_id)
-    return jsonify({"owner_id": specific_owner.id, "name": specific_owner.name, "is_car_owner": specific_owner.is_car_owner}), 200
+    return jsonify({"owner_id": specific_owner.id, "name": specific_owner.name, "sale_opportunity": not specific_owner.is_car_owner}), 200
 
 @owner_bp.route("/<int:owner_id>", methods=["DELETE"])
 def remove_owner(owner_id):
