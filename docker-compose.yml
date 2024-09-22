@@ -1,0 +1,20 @@
+services:
+  app:
+    build: 
+      context: ./ 
+      dockerfile: dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+    restart: unless-stopped
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: advicehealth
+      POSTGRES_PASSWORD: senha@123@#
+      POSTGRES_DB: norktown
+    ports:
+      - "3555:3555"
