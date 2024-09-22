@@ -20,4 +20,8 @@ def create_app(testing=False):
     migrate.init_app(app, db)
     jwt.init_app(app)
 
+    # register blueprints
+    from .routes import api_bp
+    app.register_blueprint(api_bp, url_prefix='/api')
+
     return app
