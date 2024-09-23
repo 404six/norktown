@@ -1,6 +1,4 @@
-# NORKTOWN
-
-This is a simple RESTful API for the following challenge:
+# [CHALLENGE] NORKTOWN
 
 ```
 This is a RESTful API for managing car owners and their vehicles.
